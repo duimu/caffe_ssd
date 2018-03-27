@@ -6,7 +6,7 @@ Echo caffe create_annoset Batch
 ::  - D:\caffe\data\VOC0712\trainval_lmdb
 ::  - D:\caffe\data\VOC0712\test_lmdb
 
-set root_dir=D:\caffe
+set root_dir=F:\Caffe\caffe_ssd
 cd %root_dir%
 
 set redo=1

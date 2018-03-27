@@ -1,0 +1,1 @@
+F:\Caffe\caffe_ssd\examples\ssd\person.jpg

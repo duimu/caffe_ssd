@@ -1,3 +1,4 @@
+
 // This program converts a set of images and annotations to a lmdb/leveldb by
 // storing them as AnnotatedDatum proto buffers.
 // Usage:
@@ -41,11 +42,11 @@ DEFINE_bool(shuffle, false,
     "Randomly shuffle the order of images and their labels");
 DEFINE_string(backend, "lmdb",
     "The backend {lmdb, leveldb} for storing the result");
-DEFINE_string(anno_type, "classification",
+DEFINE_string(anno_type, "detection",
     "The type of annotation {classification, detection}.");
 DEFINE_string(label_type, "xml",
     "The type of annotation file format.");
-DEFINE_string(label_map_file, "",
+DEFINE_string(label_map_file, "F:\\Caffe\\caffe_ssd\\data\\VOC0712\\labelmap_voc.prototxt",
     "A file with LabelMap protobuf message.");
 DEFINE_bool(check_label, false,
     "When this option is on, check that there is no duplicated name/label.");
@@ -78,12 +79,17 @@ int main(int argc, char** argv) {
         "    convert_annoset [FLAGS] ROOTFOLDER/ LISTFILE DB_NAME\n");
   gflags::ParseCommandLineFlags(&argc, &argv, true);
 
-  if (argc < 4) {
-    gflags::ShowUsageWithFlagsRestrict(argv[0], "tools/convert_annoset");
-    return 1;
-  }
+//   if (argc < 4) {
+// 	  gflags::ShowUsageWithFlagsRestrict(argv[0], "tools/convert_annoset");
+// 	  return 1;
+//   }
+ 
+  argv[0] = "F:/Caffe/caffe_ssd/data/VOC0712/";
+  argv[1] = "F:/Caffe/caffe_ssd/data/VOC0712/test.txt";
+  argv[2] = "F:/Caffe/caffe_ssd/data/VOC0712/convert_annoset__lmdb";
 
-  const bool is_color = !FLAGS_gray;
+
+  const bool is_color = !FLAGS_gray; 
   const bool check_size = FLAGS_check_size;
   const bool encoded = FLAGS_encoded;
   const string encode_type = FLAGS_encode_type;
@@ -94,6 +100,8 @@ int main(int argc, char** argv) {
   const bool check_label = FLAGS_check_label;
   std::map<std::string, int> name_to_label;
 
+  std::cout << anno_type << std::endl;
+  
   std::ifstream infile(argv[2]);
   std::vector<std::pair<std::string, boost::variant<int, std::string> > > lines;
   std::string filename;

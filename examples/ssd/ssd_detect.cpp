@@ -305,8 +305,19 @@ int main(int argc, char** argv) {
           out << static_cast<int>(d[4] * img.rows) << " ";
           out << static_cast<int>(d[5] * img.cols) << " ";
           out << static_cast<int>(d[6] * img.rows) << std::endl;
+
+		  cv::Point pt1, pt2;
+		  pt1.x = static_cast<int>( d[3] * img.cols);
+		  pt1.y = static_cast<int> (d[4] * img.rows);
+		  pt2.x = static_cast<int>(d[5] * img.cols);
+		  pt2.y = static_cast<int>(d[6] * img.rows);
+
+		  cv::rectangle(img, pt1, pt2, cv::Scalar(255, 0, 0));
+
         }
       }
+	  cv::imshow("result", img);
+	  cv::waitKey();
     } else if (file_type == "video") {
       cv::VideoCapture cap(file);
       if (!cap.isOpened()) {

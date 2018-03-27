@@ -20,6 +20,8 @@
     <Platform>x64</Platform>
     <RootNamespace>test_all</RootNamespace>
     <NuGetPackageImportStamp>1df3590e</NuGetPackageImportStamp>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -194,6 +196,7 @@
     <Import Project="..\..\..\NugetPackages\OpenCV.2.4.10\build\native\OpenCV.targets" Condition="Exists('..\..\..\NugetPackages\OpenCV.2.4.10\build\native\OpenCV.targets')" />
     <Import Project="..\..\..\NugetPackages\LevelDB-vc120.1.2.0.0\build\native\LevelDB-vc120.targets" Condition="Exists('..\..\..\NugetPackages\LevelDB-vc120.1.2.0.0\build\native\LevelDB-vc120.targets')" />
     <Import Project="..\..\..\NugetPackages\lmdb-v120-clean.0.9.14.0\build\native\lmdb-v120-clean.targets" Condition="Exists('..\..\..\NugetPackages\lmdb-v120-clean.0.9.14.0\build\native\lmdb-v120-clean.targets')" />
+    <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -218,5 +221,6 @@
     <Error Condition="!Exists('..\..\..\NugetPackages\OpenCV.2.4.10\build\native\OpenCV.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\NugetPackages\OpenCV.2.4.10\build\native\OpenCV.targets'))" />
     <Error Condition="!Exists('..\..\..\NugetPackages\LevelDB-vc120.1.2.0.0\build\native\LevelDB-vc120.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\NugetPackages\LevelDB-vc120.1.2.0.0\build\native\LevelDB-vc120.targets'))" />
     <Error Condition="!Exists('..\..\..\NugetPackages\lmdb-v120-clean.0.9.14.0\build\native\lmdb-v120-clean.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\NugetPackages\lmdb-v120-clean.0.9.14.0\build\native\lmdb-v120-clean.targets'))" />
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
 </Project>

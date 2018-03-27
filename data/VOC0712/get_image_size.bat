@@ -15,8 +15,8 @@ Echo caffe get_image_size Batch
 ::   imgfolder1/img1.JPEG annofolder1/anno1.xml
 ::   ....
 
-set TOOLS=D:\caffe\Build\x64\Release
-set DATA=D:\caffe\data\VOC0712
+set TOOLS=F:\Caffe\caffe_ssd\Build\x64\Release
+set DATA=F:\Caffe\caffe_ssd\data\VOC0712
 
 %TOOLS%\get_image_size ^
 	%Data%\ ^
